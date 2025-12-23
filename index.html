@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>필쏘굿 사진전</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 입장 화면 -->
+    <div class="entry-screen" id="entryScreen">
+        <div class="entry-title">"남들한테는 보이지 않지만 나한테만 보이는 것. 그게 사진가의 시작이다."</div>
+        <button class="entry-button" id="entryButton">2025 필쏘굿 사진전 입장하기</button>
+        <div class="music-notice">입장하면 노래가 재생됩니다</div>
+    </div>
+
+    <!-- 배경 음악 -->
+    <audio id="bgMusic" loop>
+        <source src="" type="audio/mpeg">
+    </audio>
+
+    <!-- 메인 컨텐츠 -->
+    <div class="main-content">
+        <div class="container">
+            <h1>𝓯𝓲𝓵𝓶 𝓼𝓸 𝓰𝓸𝓸𝓭</h1>
+            
+            <!-- 엔딩 크레딧 -->
+            <div class="ending-section">
+                <div class="ending-message">
+                    지금까지 필쏘굿 동호회를 사랑해 주셔서 감사합니다.<br>
+                    여러분도 사진을 통해 반복되는 일상을<br>
+                    새로운 시선으로 바라보고 삶에 활력이 불어넣어지기를 바랍니다.
+                </div>
+                <div class="credits-accordion">
+                    <button class="credits-toggle" id="creditsToggle">필쏘굿과 함께한 사람들</button>
+                    <div class="credits-content" id="creditsContent">
+                        <div class="credits-names">
+                            김지훈, 남윤정, 명소리, 박옥정, 장원창,
+                            정다영, 정대웅, 정채빈, 채인식, 이가혁,
+                            이보라, 이승희, 이준성, 이태승
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery" id="gallery"></div>
+        </div>
+    </div>
+
+    <!-- 모달 -->
+    <div class="modal" id="modal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <span class="nav-btn prev-btn" onclick="navigatePhoto(-1)">&#10094;</span>
+        <span class="nav-btn next-btn" onclick="navigatePhoto(1)">&#10095;</span>
+        <div class="modal-content">
+            <img id="modal-img" src="" alt="">
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
