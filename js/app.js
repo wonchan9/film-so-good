@@ -96,8 +96,9 @@ const PHOTO_LIST = [
 
 // 🎵 배경 음악 목록
 const MUSIC_LIST = [
-    'audio/bgm1.mp3',
-    'audio/bgm2.mp3'
+    { file: 'audio/bgm1.mp3', title: 'Feels So Good - 척 맨지오니' },
+    { file: 'audio/bgm2.mp3', title: 'Ice Dance - 가위손 OST' },
+    { file: 'audio/bgm3.mp3', title: '눈 - 자이언티, 이문세' }
 ];
 
 // ========================================
@@ -105,6 +106,9 @@ const MUSIC_LIST = [
 // ========================================
 
 const photos = PHOTO_LIST;
+
+// 현재 음악 인덱스
+let currentMusicIndex = Math.floor(Math.random() * MUSIC_LIST.length);
 
 // 랜덤 셔플 함수
 function shuffleArray(array) {
@@ -123,9 +127,18 @@ const shuffledPhotos = shuffleArray(photos);
 let currentPhotoIndex = 0;
 
 // 배경 음악 설정
-const randomMusic = MUSIC_LIST[Math.floor(Math.random() * MUSIC_LIST.length)];
 const bgMusic = document.getElementById('bgMusic');
-bgMusic.src = randomMusic;
+
+// 음악 로드 함수
+function loadMusic(index) {
+    const music = MUSIC_LIST[index];
+    bgMusic.src = music.file;
+    document.getElementById('musicTitle').textContent = music.title;
+    currentMusicIndex = index;
+}
+
+// 첫 음악 로드
+loadMusic(currentMusicIndex);
 
 // ========================================
 // 입장 화면
@@ -134,6 +147,7 @@ bgMusic.src = randomMusic;
 document.getElementById('entryButton').addEventListener('click', function() {
     const entryScreen = document.getElementById('entryScreen');
     const mainContent = document.querySelector('.main-content');
+    const musicPlayer = document.getElementById('musicPlayer');
 
     // 음악 재생
     bgMusic.play().catch(e => console.log('음악 재생 실패:', e));
@@ -147,6 +161,7 @@ document.getElementById('entryButton').addEventListener('click', function() {
     // 메인 컨텐츠 표시
     setTimeout(() => {
         mainContent.classList.add('visible');
+        musicPlayer.classList.add('visible');  // 음악 플레이어 표시
     }, 800);
 });
 
@@ -156,7 +171,10 @@ document.getElementById('entryButton').addEventListener('click', function() {
 
 document.getElementById('creditsToggle').addEventListener('click', function() {
     const content = document.getElementById('creditsContent');
+    const icon = document.getElementById('accordionIcon');
+    
     content.classList.toggle('active');
+    icon.classList.toggle('rotated');
 });
 
 // ========================================
@@ -234,3 +252,35 @@ document.getElementById('modal').addEventListener('click', (e) => {
 createGallery();
 
 console.log(`✅ 총 ${photos.length}장의 사진이 로드되었습니다.`);
+
+// ========================================
+// 음악 플레이어 컨트롤
+// ========================================
+
+// 재생/일시정지 버튼
+document.getElementById('playPauseBtn').addEventListener('click', function() {
+    const icon = document.getElementById('playPauseIcon');
+    
+    if (bgMusic.paused) {
+        bgMusic.play();
+        icon.textContent = '⏸';
+    } else {
+        bgMusic.pause();
+        icon.textContent = '▶';
+    }
+});
+
+// 다음 곡 버튼
+document.getElementById('nextBtn').addEventListener('click', function() {
+    currentMusicIndex = (currentMusicIndex + 1) % MUSIC_LIST.length;
+    loadMusic(currentMusicIndex);
+    bgMusic.play();
+    document.getElementById('playPauseIcon').textContent = '⏸';
+});
+
+// 음악이 끝나면 자동으로 다음 곡
+bgMusic.addEventListener('ended', function() {
+    currentMusicIndex = (currentMusicIndex + 1) % MUSIC_LIST.length;
+    loadMusic(currentMusicIndex);
+    bgMusic.play();
+});

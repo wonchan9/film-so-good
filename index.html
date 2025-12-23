@@ -9,7 +9,9 @@
 <body>
     <!-- 입장 화면 -->
     <div class="entry-screen" id="entryScreen">
-        <div class="entry-title">"남들한테는 보이지 않지만 나한테만 보이는 것. 그게 사진가의 시작이다."</div>
+        <div class="entry-title">"남들한테는 보이지 않지만<br>
+            나한테만 보이는 것,<br>
+            그게 사진가의 시작이다."</div>
         <button class="entry-button" id="entryButton">2025 필쏘굿 사진전 입장하기</button>
         <div class="music-notice">입장하면 노래가 재생됩니다</div>
     </div>
@@ -27,16 +29,19 @@
             <!-- 엔딩 크레딧 -->
             <div class="ending-section">
                 <div class="ending-message">
-                    지금까지 필쏘굿 동호회를 사랑해 주셔서 감사합니다.<br>
-                    여러분도 사진을 통해 반복되는 일상을<br>
-                    새로운 시선으로 바라보고 삶에 활력이 불어넣어지기를 바랍니다.
+                    지난 1년 6개월이라는 시간동안 필쏘굿을 사랑해 주셔서 감사합니다.<br>
+                    사진과 영화로 반복되고 지루한 일상을 새롭게 바라보는 시간이었습니다.<br>
+                    그 시선이 여러분 모두의 일상 어딘가에도 남아 있기를 바랍니다.
                 </div>
                 <div class="credits-accordion">
-                    <button class="credits-toggle" id="creditsToggle">필쏘굿과 함께한 사람들</button>
+                    <button class="credits-toggle" id="creditsToggle">
+                        필쏘굿과 함께한 사람들
+                        <span class="accordion-icon" id="accordionIcon">▼</span>
+                    </button>
                     <div class="credits-content" id="creditsContent">
                         <div class="credits-names">
-                            김지훈, 남윤정, 명소리, 박옥정, 장원창,
-                            정다영, 정대웅, 정채빈, 채인식, 이가혁,
+                            김지훈, 남윤정, 명소리, 박옥정, 장원창,<br>
+                            정다영, 정대웅, 정채빈, 채인식, 이가혁,<br>
                             이보라, 이승희, 이준성, 이태승
                         </div>
                     </div>
@@ -44,6 +49,22 @@
             </div>
 
             <div class="gallery" id="gallery"></div>
+        </div>
+    </div>
+
+    <!-- 음악 플레이어 (하단 고정) -->
+    <div class="music-player" id="musicPlayer">
+        <div class="music-info">
+            <span class="music-icon">🎵</span>
+            <span class="music-title" id="musicTitle">배경 음악</span>
+        </div>
+        <div class="music-controls">
+            <button class="control-btn" id="playPauseBtn" title="재생/일시정지">
+                <span id="playPauseIcon">⏸</span>
+            </button>
+            <button class="control-btn" id="nextBtn" title="다음 곡">
+                <span>⏭</span>
+            </button>
         </div>
     </div>
 
