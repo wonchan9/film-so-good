@@ -3,7 +3,7 @@
 // ========================================
 
 // 이미지 개수 (자동으로 image (1).png ~ image (N).png 생성)
-const IMAGE_COUNT = 89;  // ← 이미지 추가/삭제 시 여기만 수정!
+const IMAGE_COUNT = 88;  // ← 이미지 추가/삭제 시 여기만 수정!
 
 // 배경 음악 목록
 const MUSIC_LIST = [
