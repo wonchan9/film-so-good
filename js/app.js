@@ -2,10 +2,99 @@
 // 설정 영역 (여기만 수정하세요!)
 // ========================================
 
-// 이미지 개수 (자동으로 image (1).png ~ image (N).png 생성)
-const IMAGE_COUNT = 88;  // ← 이미지 추가/삭제 시 여기만 수정!
+// 📸 이미지 파일 목록 (14번 제외)
+const PHOTO_LIST = [
+    'image (1).png',
+    'image (2).png',
+    'image (3).png',
+    'image (4).png',
+    'image (5).png',
+    'image (6).png',
+    'image (7).png',
+    'image (8).png',
+    'image (9).png',
+    'image (10).png',
+    'image (11).png',
+    'image (12).png',
+    'image (13).png',
+    // 'image (14).png',  ← 14번 제외!
+    'image (15).png',
+    'image (16).png',
+    'image (17).png',
+    'image (18).png',
+    'image (19).png',
+    'image (20).png',
+    'image (21).png',
+    'image (22).png',
+    'image (23).png',
+    'image (24).png',
+    'image (25).png',
+    'image (26).png',
+    'image (27).png',
+    'image (28).png',
+    'image (29).png',
+    'image (30).png',
+    'image (31).png',
+    'image (32).png',
+    'image (33).png',
+    'image (34).png',
+    'image (35).png',
+    'image (36).png',
+    'image (37).png',
+    'image (38).png',
+    'image (39).png',
+    'image (40).png',
+    'image (41).png',
+    'image (42).png',
+    'image (43).png',
+    'image (44).png',
+    'image (45).png',
+    'image (46).png',
+    'image (47).png',
+    'image (48).png',
+    'image (49).png',
+    'image (50).png',
+    'image (51).png',
+    'image (52).png',
+    'image (53).png',
+    'image (54).png',
+    'image (55).png',
+    'image (56).png',
+    'image (57).png',
+    'image (58).png',
+    'image (59).png',
+    'image (60).png',
+    'image (61).png',
+    'image (62).png',
+    'image (63).png',
+    'image (64).png',
+    'image (65).png',
+    'image (66).png',
+    'image (67).png',
+    'image (68).png',
+    'image (69).png',
+    'image (70).png',
+    'image (71).png',
+    'image (72).png',
+    'image (73).png',
+    'image (74).png',
+    'image (75).png',
+    'image (76).png',
+    'image (77).png',
+    'image (78).png',
+    'image (79).png',
+    'image (80).png',
+    'image (81).png',
+    'image (82).png',
+    'image (83).png',
+    'image (84).png',
+    'image (85).png',
+    'image (86).png',
+    'image (87).png',
+    'image (88).png'
+];
 
-// 배경 음악 목록
+// 🎵 배경 음악 목록
 const MUSIC_LIST = [
     'audio/bgm1.mp3',
     'audio/bgm2.mp3'
@@ -15,8 +104,7 @@ const MUSIC_LIST = [
 // 아래는 건드리지 마세요!
 // ========================================
 
-// 사진 데이터 자동 생성
-const photos = Array.from({length: IMAGE_COUNT}, (_, i) => `image (${i + 1}).png`);
+const photos = PHOTO_LIST;
 
 // 랜덤 셔플 함수
 function shuffleArray(array) {
@@ -145,4 +233,4 @@ document.getElementById('modal').addEventListener('click', (e) => {
 
 createGallery();
 
-console.log(`✅ 총 ${IMAGE_COUNT}장의 사진이 로드되었습니다.`);
+console.log(`✅ 총 ${photos.length}장의 사진이 로드되었습니다.`);
