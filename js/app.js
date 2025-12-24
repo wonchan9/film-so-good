@@ -239,6 +239,7 @@ function openModal(index) {
     
     modal.classList.add('active');
     modalImg.src = `images/${shuffledPhotos[index]}`;
+    document.body.style.overflow = 'hidden';  
 }
 
 // 모달 닫기
