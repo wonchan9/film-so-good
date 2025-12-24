@@ -96,9 +96,14 @@ const PHOTO_LIST = [
 
 // 🎵 배경 음악 목록
 const MUSIC_LIST = [
-    { file: 'audio/bgm1.mp3', title: 'Feels So Good - 척 맨지오니' },
-    { file: 'audio/bgm2.mp3', title: 'Ice Dance - 가위손 OST' },
-    { file: 'audio/bgm3.mp3', title: '눈 - 자이언티, 이문세' }
+    { file: 'audio/bgm1.mp3', title: 'Feels So good - 척 지오반니' },
+    { file: 'audio/bgm2.mp3', title: 'Ice Dance - 영화 <가위손> OST' },
+    { file: 'audio/bgm3.mp3', title: 'House of Woodcock - 영화 <팬텀스레드> OST' },
+    { file: 'audio/bgm4.mp3', title: 'Things In Life - 영화 <중경삼림> 삽입곡' },
+    { file: 'audio/bgm5.mp3', title: 'Aqua - 영화 <괴물> OST' },
+    { file: 'audio/bgm6.mp3', title: 'LOVE (Variation 2) - 영화 <해피엔드> OST' },
+    { file: 'audio/bgm7.mp3', title: 'Obituary - 영화 <프렌치 디스패치> OST' },
+    { file: 'audio/bgm8.mp3', title: 'The Shape Of Water - 영화 <셰이프 오브 워터> OST' },
 ];
 
 // ========================================
@@ -133,7 +138,20 @@ const bgMusic = document.getElementById('bgMusic');
 function loadMusic(index) {
     const music = MUSIC_LIST[index];
     bgMusic.src = music.file;
-    document.getElementById('musicTitle').textContent = music.title;
+    
+    const titleElement = document.getElementById('musicTitle');
+    titleElement.innerHTML = `<span>${music.title}</span>`;
+    
+    // 제목이 너비를 초과하는지 확인
+    setTimeout(() => {
+        const span = titleElement.querySelector('span');
+        if (span.scrollWidth > titleElement.clientWidth) {
+            titleElement.classList.add('scrolling');
+        } else {
+            titleElement.classList.remove('scrolling');
+        }
+    }, 100);
+    
     currentMusicIndex = index;
 }
 
@@ -158,11 +176,22 @@ document.getElementById('entryButton').addEventListener('click', function() {
     // body 스크롤 활성화
     document.body.classList.add('scrollable');
 
+    // 스크롤초기화
+    window.scrollTo(0, 0);
+
     // 메인 컨텐츠 표시
     setTimeout(() => {
-        mainContent.classList.add('visible');
-        musicPlayer.classList.add('visible');  // 음악 플레이어 표시
-    }, 800);
+    mainContent.classList.add('visible');
+    musicPlayer.classList.add('visible');
+    
+    // ← 여기 추가!
+    // 첫 곡 롤링 체크
+    const titleElement = document.getElementById('musicTitle');
+    const span = titleElement.querySelector('span');
+    if (span && span.scrollWidth > titleElement.clientWidth) {
+        titleElement.classList.add('scrolling');
+    }
+}, 800);
 });
 
 // ========================================
@@ -263,10 +292,10 @@ document.getElementById('playPauseBtn').addEventListener('click', function() {
     
     if (bgMusic.paused) {
         bgMusic.play();
-        icon.textContent = '⏸';
+        icon.classList.add('paused');  // 일시정지 아이콘
     } else {
         bgMusic.pause();
-        icon.textContent = '▶';
+        icon.classList.remove('paused');  // 재생 아이콘
     }
 });
 
@@ -275,7 +304,7 @@ document.getElementById('nextBtn').addEventListener('click', function() {
     currentMusicIndex = (currentMusicIndex + 1) % MUSIC_LIST.length;
     loadMusic(currentMusicIndex);
     bgMusic.play();
-    document.getElementById('playPauseIcon').textContent = '⏸';
+    document.getElementById('playPauseIcon').classList.add('paused');
 });
 
 // 음악이 끝나면 자동으로 다음 곡
