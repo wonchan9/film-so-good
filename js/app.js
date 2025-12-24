@@ -219,7 +219,7 @@ function createGallery() {
         
         card.innerHTML = `
             <div class="photo-wrapper">
-                <img src="images/${photo}" alt="사진 ${index + 1}" onerror="this.src='https://via.placeholder.com/250x250?text=이미지+없음'">
+                <img loading="lazy" src="images/${photo}" alt="사진 ${index + 1}" onerror="this.src='https://via.placeholder.com/250x250?text=이미지+없음'">
             </div>
         `;
         
