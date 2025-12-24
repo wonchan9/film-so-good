@@ -313,3 +313,10 @@ bgMusic.addEventListener('ended', function() {
     loadMusic(currentMusicIndex);
     bgMusic.play();
 });
+
+//전체화면
+window.addEventListener('load', function() {
+    setTimeout(() => {
+        window.scrollTo(0, 1);
+        setTimeout(() => window.scrollTo(0, 0), 100);
+    }, 500);
